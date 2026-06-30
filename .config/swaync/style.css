@@ -1,0 +1,105 @@
+/* ===== Catppuccin Mocha — SwayNC ===== */
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Color Emoji";
+  font-size: 14px;
+}
+
+/* ---- Popup thông báo lẻ ---- */
+.notification-row { outline: none; }
+.notification {
+  border-radius: 14px;
+  margin: 8px 12px;
+  background: #181825;
+  border: 1px solid #313244;
+}
+.notification-content {
+  background: transparent;
+  padding: 8px;
+  border-radius: 14px;
+}
+.close-button {
+  background: #f38ba8;
+  color: #11111b;
+  border-radius: 50%;
+  margin: 6px;
+}
+.notification-default-action { background: transparent; border-radius: 14px; }
+.summary { color: #cdd6f4; font-weight: bold; }
+.body { color: #a6adc8; }
+.time { color: #6c7086; }
+
+/* ---- Trung tâm điều khiển ---- */
+.control-center {
+  background: rgba(24, 24, 37, 0.96);
+  border: 1px solid #45475a;
+  border-radius: 18px;
+  margin: 4px;
+  padding: 12px;
+}
+.control-center .notification { background: #1e1e2e; }
+
+.widget-title {
+  color: #cdd6f4;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px 4px;
+}
+.widget-title > button {
+  color: #11111b;
+  background: #89b4fa;
+  border-radius: 10px;
+  padding: 4px 12px;
+}
+.widget-title > button:hover { background: #b4befe; }
+
+/* DND */
+.widget-dnd {
+  color: #cdd6f4;
+  margin: 8px 4px;
+  font-size: 15px;
+}
+.widget-dnd > switch {
+  background: #313244;
+  border-radius: 12px;
+}
+.widget-dnd > switch:checked { background: #cba6f7; }
+.widget-dnd > switch slider { background: #cdd6f4; border-radius: 12px; }
+
+/* Sliders âm lượng + độ sáng */
+.widget-volume, .widget-backlight {
+  background: #1e1e2e;
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin: 8px 4px;
+  color: #cdd6f4;
+}
+trough { background: #313244; border-radius: 12px; min-height: 10px; }
+highlight { background: linear-gradient(90deg, #89b4fa, #cba6f7); border-radius: 12px; }
+slider { background: #cdd6f4; border-radius: 50%; min-width: 14px; min-height: 14px; }
+
+/* Lưới nút Wifi/BT/... */
+.widget-buttons-grid {
+  background: #1e1e2e;
+  border-radius: 14px;
+  padding: 10px;
+  margin: 8px 4px;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: #313244;
+  border-radius: 12px;
+  color: #cdd6f4;
+  padding: 12px;
+  margin: 4px;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: #45475a;
+  color: #ffffff;
+}
+
+/* MPRIS (đang phát nhạc) */
+.widget-mpris {
+  background: #1e1e2e;
+  border-radius: 14px;
+  margin: 8px 4px;
+  color: #cdd6f4;
+}

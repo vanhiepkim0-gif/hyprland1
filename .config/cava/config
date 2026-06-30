@@ -1,0 +1,22 @@
+# ===== Cava — Catppuccin Mocha =====
+[general]
+framerate = 60
+autosens = 1
+bars = 0
+bar_width = 2
+bar_spacing = 1
+
+[output]
+method = ncurses
+channels = stereo
+
+[color]
+gradient = 1
+gradient_count = 4
+gradient_color_1 = '#89b4fa'
+gradient_color_2 = '#94e2d5'
+gradient_color_3 = '#cba6f7'
+gradient_color_4 = '#f5c2e7'
+
+[smoothing]
+noise_reduction = 0.45

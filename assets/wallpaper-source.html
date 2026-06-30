@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;background:#181825;}</style></head><body>
+<svg width="1440" height="900" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#1e1e2e"/><stop offset="1" stop-color="#11111b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.22" r="0.5">
+      <stop offset="0" stop-color="#cba6f7" stop-opacity="0.55"/><stop offset="1" stop-color="#cba6f7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="w1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#89b4fa"/><stop offset="1" stop-color="#cba6f7"/>
+    </linearGradient>
+    <linearGradient id="w2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#94e2d5"/><stop offset="1" stop-color="#89b4fa"/>
+    </linearGradient>
+    <linearGradient id="w3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5c2e7"/><stop offset="1" stop-color="#cba6f7"/>
+    </linearGradient>
+    <filter id="b1"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <rect width="1440" height="900" fill="url(#sky)"/>
+  <circle cx="1120" cy="200" r="430" fill="url(#glow)"/>
+  <!-- các dải sóng mượt chồng nhau ở dưới -->
+  <g filter="url(#b1)" opacity="0.9">
+    <path d="M0 640 C 360 560 720 720 1440 600 L1440 900 L0 900 Z" fill="url(#w1)" opacity="0.35"/>
+    <path d="M0 720 C 420 650 880 800 1440 690 L1440 900 L0 900 Z" fill="url(#w2)" opacity="0.4"/>
+    <path d="M0 800 C 380 740 900 860 1440 780 L1440 900 L0 900 Z" fill="url(#w3)" opacity="0.5"/>
+  </g>
+  <!-- vài đường nét mảnh trang trí -->
+  <g stroke="#cdd6f4" stroke-opacity="0.07" fill="none" stroke-width="2">
+    <path d="M0 600 C 360 520 720 680 1440 560"/>
+    <path d="M0 560 C 360 480 720 640 1440 520"/>
+  </g>
+</svg>
+</body></html>

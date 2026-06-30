@@ -1,0 +1,32 @@
+/* ===== Catppuccin Mocha — Wofi ===== */
+window {
+    margin: 0px;
+    border: 2px solid #89b4fa;
+    border-radius: 16px;
+    background-color: rgba(30, 30, 46, 0.96);
+    font-family: "JetBrainsMono Nerd Font", "Noto Color Emoji";
+    font-size: 14px;
+}
+#input {
+    margin: 14px;
+    padding: 11px 14px;
+    border: none;
+    border-radius: 12px;
+    background-color: #313244;
+    color: #cdd6f4;
+}
+#input image { color: #89b4fa; }
+#inner-box { margin: 6px 12px 12px 12px; }
+#outer-box { margin: 0px; }
+#scroll { margin: 0px; }
+#text { color: #cdd6f4; padding: 0 6px; }
+#entry {
+    padding: 9px;
+    margin: 2px 0;
+    border-radius: 12px;
+}
+#entry:selected {
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+}
+#entry:selected #text { color: #1e1e2e; }
+#entry image { margin-right: 8px; }

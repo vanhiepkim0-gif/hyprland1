@@ -1,0 +1,11 @@
+width=600
+height=440
+location=center
+show=drun
+prompt=Tìm ứng dụng...
+allow_images=true
+image_size=30
+insensitive=true
+gtk_dark=true
+no_actions=true
+hide_scroll=true
