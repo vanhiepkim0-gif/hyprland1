@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# Cài dotfiles: sao chép .config/* vào ~/.config (tự sao lưu bản cũ).
+# Cài dotfiles: sao chép .config/* vào ~/.config (tự sao lưu bản cũ) + hình nền.
 set -e
-SRC="$(cd "$(dirname "$0")" && pwd)/.config"
+REPO="$(cd "$(dirname "$0")" && pwd)"
+SRC="$REPO/.config"
 DST="$HOME/.config"
 TS="$(date +%Y%m%d_%H%M%S)"
 
-echo "→ Sao chép từ $SRC vào $DST"
+echo "→ Sao chép config từ $SRC vào $DST"
 for dir in "$SRC"/*/; do
     name="$(basename "$dir")"
     if [ -e "$DST/$name" ]; then
@@ -15,10 +16,13 @@ for dir in "$SRC"/*/; do
     cp -r "$dir" "$DST/$name"
     echo "  ✓ $name"
 done
-
-# Cấp quyền chạy cho script
 chmod +x "$DST"/hypr/*.sh 2>/dev/null || true
+
+# Hình nền
+mkdir -p "$HOME/Pictures/wallpapers"
+[ -f "$REPO/assets/catppuccin-waves.png" ] && cp "$REPO/assets/catppuccin-waves.png" "$HOME/Pictures/wallpapers/" && echo "  ✓ hình nền -> ~/Pictures/wallpapers/"
 
 echo
 echo "✅ Xong! Đăng xuất rồi chọn 'Hyprland' ở màn hình đăng nhập."
-echo "   (Nhớ cài JetBrainsMono Nerd Font để icon thanh bar hiển thị đúng.)"
+echo "   Nếu username KHÁC 'michael', sửa các đường dẫn /home/michael/... trong ~/.config/hypr/hyprland.conf:"
+echo "     sed -i \"s|/home/michael|\$HOME|g\" ~/.config/hypr/hyprland.conf ~/.config/hypr/*.sh"
