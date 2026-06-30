@@ -30,9 +30,7 @@ window#waybar {
 }
 #custom-launcher:hover { color: #b4befe; }
 
-#custom-telegram,
-#custom-claude,
-#custom-checkshop {
+#custom-telegram {
     font-size: 15px;
     padding: 0 8px;
     margin-right: 2px;
