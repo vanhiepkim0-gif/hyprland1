@@ -30,6 +30,12 @@ window#waybar {
 }
 #custom-launcher:hover { color: #b4befe; }
 
+#custom-telegram {
+    font-size: 15px;
+    padding: 0 8px;
+    margin-right: 2px;
+}
+
 /* Workspaces */
 #workspaces { padding: 0 2px; }
 #workspaces button {
