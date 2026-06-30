@@ -58,6 +58,8 @@ window#waybar {
 
 /* Mỗi mục bên phải là 1 "viên" nhỏ */
 #clock,
+#mpris,
+#custom-weather,
 #custom-recording,
 #cpu,
 #memory,
@@ -101,6 +103,8 @@ window#waybar {
     background: rgba(243, 139, 168, 0.18);
 }
 #custom-notification { color: #f9e2af; font-size: 15px; }
+#custom-weather { color: #fab387; }
+#mpris { color: #f5c2e7; }
 
 #tray { background: transparent; }
 #tray > .passive { -gtk-icon-effect: dim; }

@@ -7,9 +7,9 @@
     "margin-right": 10,
     "spacing": 4,
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window", "mpris"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/recording", "cpu", "memory", "backlight", "pulseaudio", "network", "battery", "custom/notification", "tray"],
+    "modules-right": ["clock#us", "custom/weather", "custom/recording", "cpu", "memory", "backlight", "pulseaudio", "network", "battery", "custom/notification", "tray"],
 
     "custom/launcher": {
         "format": "󰀻",
@@ -43,6 +43,27 @@
         "format": "󰥔  {:%H:%M}",
         "format-alt": "󰃭  {:%a %d/%m/%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#us": {
+        "format": "🇺🇸 {:%H:%M}",
+        "timezone": "America/New_York",
+        "timezones": ["America/New_York", "America/Los_Angeles"],
+        "tooltip-format": "Giờ Mỹ (cuộn để đổi ET/PT)\n{:%A, %d/%m/%Y  %H:%M %Z}"
+    },
+    "mpris": {
+        "format": "{player_icon} {title}",
+        "format-paused": "{status_icon} {title}",
+        "player-icons": { "default": "🎵", "firefox": "🎵", "chromium": "🎵", "spotify": "🎧" },
+        "status-icons": { "paused": "⏸", "playing": "▶" },
+        "max-length": 28,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+    "custom/weather": {
+        "exec": "curl -s 'https://wttr.in/?format=%c+%t' 2>/dev/null | sed 's/+//' || echo ''",
+        "interval": 1800,
+        "tooltip": false
     },
     "custom/recording": {
         "exec": "pgrep -x wf-recorder >/dev/null && echo '󰑊 REC' || echo ''",
