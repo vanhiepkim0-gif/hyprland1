@@ -28,11 +28,11 @@
     },
     "custom/translate": {
         "format": "{}",
-        "exec": "echo '{\"text\":\"󰗊\",\"tooltip\":\"Google Dịch — Bấm: dịch clipboard (VN↔EN) · Chuột phải: mở web\"}'",
+        "exec": "echo '{\"text\":\"󰗊\",\"tooltip\":\"Google Dịch — Bấm: mở popup app (Anh↔Việt) · Chuột phải: dịch nhanh clipboard\"}'",
         "return-type": "json",
         "interval": "once",
-        "on-click": "/home/michael/.config/hypr/translate.sh",
-        "on-click-right": "xdg-open 'https://translate.google.com/?sl=auto&tl=vi&op=translate'"
+        "on-click": "/home/michael/.config/hypr/gtranslate.sh",
+        "on-click-right": "/home/michael/.config/hypr/translate.sh"
     },
     "hyprland/workspaces": {
         "format": "{icon}",

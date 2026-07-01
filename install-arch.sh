@@ -8,7 +8,7 @@ PACMAN_PKGS=(
   grim slurp swappy wf-recorder wl-clipboard cliphist
   brightnessctl playerctl pavucontrol power-profiles-daemon
   network-manager-applet blueman
-  cava fastfetch nautilus
+  cava fastfetch nautilus chromium
   ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-font-awesome noto-fonts-emoji
   fcitx5 fcitx5-unikey fcitx5-configtool fcitx5-gtk fcitx5-qt
   polkit python curl translate-shell
