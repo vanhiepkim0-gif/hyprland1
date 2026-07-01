@@ -70,6 +70,9 @@ window#waybar {
 #custom-recording,
 #cpu,
 #memory,
+#custom-usdvnd,
+#custom-cputemp,
+#power-profiles-daemon,
 #backlight,
 #pulseaudio,
 #network,
@@ -112,6 +115,27 @@ window#waybar {
 #custom-notification { color: #f9e2af; font-size: 15px; }
 #custom-weather { color: #fab387; }
 #mpris { color: #f5c2e7; }
+
+/* Widget mới */
+#custom-usdvnd { color: #a6e3a1; }                 /* tỷ giá USD→VND — xanh lá "tiền" */
+#custom-cputemp { color: #f9e2af; }                /* nhiệt độ CPU — vàng */
+#custom-cputemp.warning { color: #fab387; }        /* >=70°C cam */
+#custom-cputemp.critical {                          /* >=82°C đỏ + nền cảnh báo */
+    color: #f38ba8;
+    background: rgba(243, 139, 168, 0.18);
+}
+#power-profiles-daemon { color: #89dceb; }         /* nút chế độ nguồn — xanh */
+#power-profiles-daemon.performance { color: #f38ba8; }
+#power-profiles-daemon.power-saver { color: #a6e3a1; }
+
+/* Sóng nhạc (cava) — cột nổi, không nền, hơi giãn chữ cho mượt */
+#custom-cava {
+    color: #94e2d5;
+    padding: 0 6px;
+    margin: 0 2px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
 
 #tray { background: transparent; }
 #tray > .passive { -gtk-icon-effect: dim; }

@@ -1,0 +1,13 @@
+# cava config riêng cho waybar (KHÔNG đụng tới ⊞+A cava toàn màn hình)
+# Xuất ra dạng số 0..7 để script đổi thành cột sóng ▁▂▃▄▅▆▇█
+[general]
+mode = normal
+framerate = 30
+bars = 10
+autosens = 1
+
+[output]
+method = raw
+raw_target = /dev/stdout
+data_format = ascii
+ascii_max_range = 7

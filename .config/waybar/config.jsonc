@@ -7,9 +7,9 @@
     "margin-right": 10,
     "spacing": 4,
 
-    "modules-left": ["custom/launcher", "custom/claude", "custom/telegram", "hyprland/workspaces", "hyprland/window", "mpris"],
+    "modules-left": ["custom/launcher", "custom/claude", "custom/telegram", "hyprland/workspaces", "hyprland/window", "mpris", "custom/cava"],
     "modules-center": ["clock"],
-    "modules-right": ["clock#us", "custom/weather", "custom/recording", "cpu", "memory", "backlight", "pulseaudio", "network", "battery", "custom/notification", "tray"],
+    "modules-right": ["clock#us", "custom/usdvnd", "custom/weather", "custom/recording", "cpu", "memory", "custom/cputemp", "power-profiles-daemon", "backlight", "pulseaudio", "network", "battery", "custom/notification", "tray"],
 
     "custom/launcher": {
         "format": "󰀻",
@@ -60,6 +60,12 @@
         "timezones": ["America/New_York", "America/Los_Angeles"],
         "tooltip-format": "Giờ Mỹ (cuộn để đổi ET/PT)\n{:%A, %d/%m/%Y  %H:%M %Z}"
     },
+    "custom/cava": {
+        "exec": "/home/michael/.config/hypr/cava-waybar.sh",
+        "format": "{}",
+        "tooltip": false,
+        "on-click": "playerctl play-pause"
+    },
     "mpris": {
         "format": "{player_icon} {title}",
         "format-paused": "{status_icon} {title}",
@@ -74,6 +80,32 @@
         "exec": "curl -s 'https://wttr.in/?format=%c+%t' 2>/dev/null | sed 's/+//' || echo ''",
         "interval": 1800,
         "tooltip": false
+    },
+    "custom/usdvnd": {
+        "exec": "/home/michael/.config/hypr/usd-vnd.sh",
+        "return-type": "json",
+        "format": "💵 {}₫",
+        "interval": 3600,
+        "tooltip": true,
+        "on-click": "xdg-open 'https://www.google.com/search?q=1+usd+to+vnd'"
+    },
+    "custom/cputemp": {
+        "exec": "/home/michael/.config/hypr/cpu-temp.sh",
+        "return-type": "json",
+        "format": "󰔏 {}",
+        "interval": 5,
+        "tooltip": true
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Chế độ nguồn: {profile}\nBấm để đổi (tiết kiệm ↔ cân bằng ↔ hiệu năng)",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󰾅",
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰌪"
+        }
     },
     "custom/recording": {
         "exec": "pgrep -x wf-recorder >/dev/null && echo '󰑊 REC' || echo ''",
