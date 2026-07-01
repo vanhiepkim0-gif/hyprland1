@@ -6,12 +6,12 @@ PACMAN_PKGS=(
   hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprpaper hyprlock hypridle hyprland-qtutils
   waybar wofi kitty swaync swaybg
   grim slurp swappy wf-recorder wl-clipboard cliphist
-  brightnessctl playerctl pavucontrol
+  brightnessctl playerctl pavucontrol power-profiles-daemon
   network-manager-applet blueman
   cava fastfetch nautilus
   ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-font-awesome noto-fonts-emoji
   fcitx5 fcitx5-unikey fcitx5-configtool fcitx5-gtk fcitx5-qt
-  polkit python
+  polkit python curl translate-shell
 )
 AUR_PKGS=( azote grimshot )
 
@@ -32,6 +32,9 @@ fi
 
 echo "→ Bật Bluetooth..."
 sudo systemctl enable --now bluetooth 2>/dev/null || true
+
+echo "→ Bật dịch vụ chế độ nguồn (cho nút hiệu năng trên taskbar)..."
+sudo systemctl enable --now power-profiles-daemon 2>/dev/null || true
 
 echo "→ Chép config + hình nền..."
 "$(dirname "$0")/install.sh"

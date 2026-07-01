@@ -31,11 +31,14 @@ window#waybar {
 #custom-launcher:hover { color: #b4befe; }
 
 #custom-telegram,
-#custom-claude {
+#custom-claude,
+#custom-translate {
     font-size: 15px;
     padding: 0 8px;
     margin-right: 2px;
 }
+#custom-translate { color: #89b4fa; }
+#custom-translate:hover { color: #b4befe; }
 
 /* Workspaces */
 #workspaces { padding: 0 2px; }

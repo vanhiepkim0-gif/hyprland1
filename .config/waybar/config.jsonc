@@ -7,7 +7,7 @@
     "margin-right": 10,
     "spacing": 4,
 
-    "modules-left": ["custom/launcher", "custom/claude", "custom/telegram", "hyprland/workspaces", "hyprland/window", "mpris", "custom/cava"],
+    "modules-left": ["custom/launcher", "custom/claude", "custom/telegram", "custom/translate", "hyprland/workspaces", "hyprland/window", "mpris", "custom/cava"],
     "modules-center": ["clock"],
     "modules-right": ["clock#us", "custom/usdvnd", "custom/weather", "custom/recording", "cpu", "memory", "custom/cputemp", "power-profiles-daemon", "backlight", "pulseaudio", "network", "battery", "custom/notification", "tray"],
 
@@ -25,6 +25,14 @@
         "format": "✳️",
         "tooltip": false,
         "on-click": "/home/michael/.config/hypr/claude-cli.sh"
+    },
+    "custom/translate": {
+        "format": "{}",
+        "exec": "echo '{\"text\":\"󰗊\",\"tooltip\":\"Google Dịch — Bấm: dịch clipboard (VN↔EN) · Chuột phải: mở web\"}'",
+        "return-type": "json",
+        "interval": "once",
+        "on-click": "/home/michael/.config/hypr/translate.sh",
+        "on-click-right": "xdg-open 'https://translate.google.com/?sl=auto&tl=vi&op=translate'"
     },
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -139,10 +147,12 @@
         "tooltip-format": "Âm lượng {volume}% — cuộn để chỉnh, bấm phải để tắt tiếng"
     },
     "network": {
-        "format-wifi": "󰖩  {essid}",
-        "format-ethernet": "󰒍  LAN",
-        "format-disconnected": "󰖪  mất mạng",
-        "tooltip-format": "{ifname}: {ipaddr}",
+        "format-wifi": "󰖩",
+        "format-ethernet": "󰒍",
+        "format-disconnected": "󰖪",
+        "tooltip-format-wifi": "󰖩  {essid}  ({signalStrength}%)\n{ifname}: {ipaddr}",
+        "tooltip-format-ethernet": "󰒍  LAN — {ifname}: {ipaddr}",
+        "tooltip-format-disconnected": "Mất mạng",
         "on-click": "nm-connection-editor"
     },
     "battery": {
