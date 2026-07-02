@@ -1,0 +1,178 @@
+// Niri Configuration File
+// Format: KDL (https://kdl.dev)
+
+// Device Inputs
+input {
+    keyboard {
+        xkb {
+            // Add custom layouts here if needed
+        }
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+}
+
+// Monitor Configuration (Scaling 1.6 for 2880x1800 display, matching Hyprland config)
+output "eDP-1" {
+    scale 1.6
+}
+
+// Layout Preferences
+layout {
+    gaps 10
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        // Gradient Catppuccin Mocha: mauve (#cba6f7) -> blue (#89b4fa)
+        active-gradient from="#cba6f7" to="#89b4fa" angle=45
+        inactive-color "#45475a"
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        on
+        softness 20
+        spread 3
+        offset x=0 y=4
+        color "#11111baa"
+    }
+}
+
+// Round window corners (matches 12px rounding from Hyprland config)
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Autostart Services
+spawn-at-startup "fcitx5" "-d"
+spawn-sh-at-startup "sleep 2 && fcitx5-remote -s unikey"
+spawn-at-startup "waybar" "-c" "/home/michael/.config/waybar/config-niri.jsonc"
+spawn-at-startup "swaync"
+spawn-at-startup "nm-applet" "--indicator"
+    // spawn-at-startup "blueman-applet"
+spawn-sh-at-startup "swaybg -i /home/michael/Pictures/wallpapers/catppuccin-waves.png -m fill"
+spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+
+// Key Bindings
+binds {
+    // --- Basic Commands ---
+    Mod+Return { spawn "kitty"; }
+    Mod+D { spawn "wofi" "--show" "drun"; }
+    Mod+Q { close-window; }
+    Mod+Shift+M { quit; }
+    Mod+M { quit; }
+    Mod+E { spawn "nautilus"; }
+    Mod+W { spawn "azote"; }
+    Mod+Shift+V { toggle-window-floating; }
+    Mod+V { spawn "/home/michael/.config/hypr/clipboard-history.sh"; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    
+    // --- Input Method (Fcitx5 Switcher) ---
+    Mod+Space { spawn "fcitx5-remote" "-t"; }
+    Mod+Shift+Space { spawn "/home/michael/.config/hypr/fix-vietnamese.sh"; }
+
+    // --- Screenshot Actions ---
+    Print { spawn "grimshot" "--notify" "copy" "area"; }
+    Mod+Print { spawn "grimshot" "--notify" "save" "area"; }
+    Shift+Print { spawn "grimshot" "--notify" "copy" "output"; }
+    Mod+Shift+Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
+    Mod+Shift+S { spawn "grimshot" "--notify" "copy" "area"; }
+
+    // --- Screen Recording Actions ---
+    Mod+R { spawn "/home/michael/.config/hypr/screen-record.sh" "full"; }
+    Mod+Shift+R { spawn "/home/michael/.config/hypr/screen-record.sh" "region"; }
+    Mod+Alt+R { spawn "/home/michael/.config/hypr/screen-record.sh" "full" "audio"; }
+
+    // --- System Control Menu ---
+    Mod+Escape { spawn "wlogout" "-b" "5"; }
+
+    // --- Notification Center ---
+    Mod+N { spawn "swaync-client" "-t" "-sw"; }
+
+    // --- Specific Apps / Helper Scripts ---
+    Mod+T { spawn "/home/michael/.config/hypr/telegram.sh"; }
+    Mod+G { spawn "/home/michael/.config/hypr/gtranslate.sh"; }
+    Mod+C { spawn "/home/michael/.config/hypr/claude-cli.sh"; }
+    Mod+slash { spawn "/home/michael/.config/hypr/cheatsheet.sh"; }
+    Mod+A { spawn "kitty" "--title=Cava-Visualizer" "-e" "cava"; }
+
+    // --- Navigation (Focus Move) ---
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    // --- Window Position Changes ---
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Right { move-column-right; }
+    
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    // --- Workspaces (1-9) ---
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // --- Resizing ---
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Preset sizing cycle
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+
+    // --- Hardware Controls (Audio / Brightness) ---
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute        { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    
+    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "5%+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+    
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+
+    // Mouse scroll workspace switching
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+}

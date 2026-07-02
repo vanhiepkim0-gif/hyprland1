@@ -1,0 +1,184 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 4,
+
+    "modules-left": ["custom/launcher", "custom/claude", "custom/telegram", "custom/translate", "niri/workspaces", "niri/window", "mpris", "custom/cava"],
+    "modules-center": ["clock"],
+    "modules-right": ["clock#us", "custom/usdvnd", "custom/weather", "custom/recording", "cpu", "memory", "custom/cputemp", "power-profiles-daemon", "backlight", "pulseaudio", "network", "battery", "custom/notification", "tray"],
+
+    "custom/launcher": {
+        "format": "󰀻",
+        "tooltip": false,
+        "on-click": "wofi --show drun"
+    },
+    "custom/telegram": {
+        "format": "✈️",
+        "tooltip": false,
+        "on-click": "/home/michael/.config/hypr/telegram.sh"
+    },
+    "custom/claude": {
+        "format": "✳️",
+        "tooltip": false,
+        "on-click": "/home/michael/.config/hypr/claude-cli.sh"
+    },
+    "custom/translate": {
+        "format": "{}",
+        "exec": "echo '{\"text\":\"󰗊\",\"tooltip\":\"Google Dịch — Bấm: mở popup app (Anh↔Việt) · Chuột phải: dịch nhanh clipboard\"}'",
+        "return-type": "json",
+        "interval": "once",
+        "on-click": "/home/michael/.config/hypr/gtranslate.sh",
+        "on-click-right": "/home/michael/.config/hypr/translate.sh"
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "󰆍",
+            "2": "󰈹",
+            "3": "󰨞",
+            "4": "󰉋",
+            "5": "󰝚",
+            "6": "󰝦",
+            "7": "󰝦",
+            "8": "󰝦",
+            "9": "󰍡",
+            "default": "󰝦"
+        }
+    },
+    "niri/window": {
+        "max-length": 45,
+        "separate-outputs": true,
+        "icon": false
+    },
+    "clock": {
+        "format": "󰥔  {:%H:%M}",
+        "format-alt": "󰃭  {:%a %d/%m/%Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#us": {
+        "format": "🇺🇸 {:%H:%M}",
+        "timezone": "America/New_York",
+        "timezones": ["America/New_York", "America/Los_Angeles"],
+        "tooltip-format": "Giờ Mỹ (cuộn để đổi ET/PT)\n{:%A, %d/%m/%Y  %H:%M %Z}"
+    },
+    "custom/cava": {
+        "exec": "/home/michael/.config/hypr/cava-waybar.sh",
+        "format": "{}",
+        "tooltip": false,
+        "on-click": "playerctl play-pause"
+    },
+    "mpris": {
+        "format": "{player_icon} {title}",
+        "format-paused": "{status_icon} {title}",
+        "player-icons": { "default": "🎵", "firefox": "🎵", "chromium": "🎵", "spotify": "🎧" },
+        "status-icons": { "paused": "⏸", "playing": "▶" },
+        "max-length": 28,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+    "custom/weather": {
+        "exec": "curl -s 'https://wttr.in/?format=%c+%t' 2>/dev/null | sed 's/+//' || echo ''",
+        "interval": 1800,
+        "tooltip": false
+    },
+    "custom/usdvnd": {
+        "exec": "/home/michael/.config/hypr/usd-vnd.sh",
+        "return-type": "json",
+        "format": "💵 {}₫",
+        "interval": 3600,
+        "tooltip": true,
+        "on-click": "xdg-open 'https://www.google.com/search?q=1+usd+to+vnd'"
+    },
+    "custom/cputemp": {
+        "exec": "/home/michael/.config/hypr/cpu-temp.sh",
+        "return-type": "json",
+        "format": "󰔏 {}",
+        "interval": 5,
+        "tooltip": true
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Chế độ nguồn: {profile}\nBấm để đổi (tiết kiệm ↔ cân bằng ↔ hiệu năng)",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󰾅",
+            "performance": "󰓅",
+            "balanced": "󰾅",
+            "power-saver": "󰌪"
+        }
+    },
+    "custom/recording": {
+        "exec": "pgrep -x wf-recorder >/dev/null && echo '󰑊 REC' || echo ''",
+        "interval": 2,
+        "tooltip": false,
+        "on-click": "/home/michael/.config/hypr/screen-record.sh full"
+    },
+    "cpu": {
+        "format": "󰘚  {usage}%",
+        "interval": 2,
+        "tooltip": true
+    },
+    "memory": {
+        "format": "󰍛  {percentage}%",
+        "interval": 2,
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G dùng ({percentage}%)\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G"
+    },
+    "backlight": {
+        "format": "󰃠  {percent}%",
+        "scroll-step": 5,
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "tooltip-format": "Độ sáng {percent}% — cuộn chuột để chỉnh"
+    },
+    "pulseaudio": {
+        "format": "󰕾  {volume}%",
+        "format-muted": "󰖁  tắt",
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip-format": "Âm lượng {volume}% — cuộn để chỉnh, bấm phải để tắt tiếng"
+    },
+    "network": {
+        "format-wifi": "󰖩",
+        "format-ethernet": "󰒍",
+        "format-disconnected": "󰖪",
+        "tooltip-format-wifi": "󰖩  {essid}  ({signalStrength}%)\n{ifname}: {ipaddr}",
+        "tooltip-format-ethernet": "󰒍  LAN — {ifname}: {ipaddr}",
+        "tooltip-format-disconnected": "Mất mạng",
+        "on-click": "nm-connection-editor"
+    },
+    "battery": {
+        "format": "󰁹  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-full": "󰁹  {capacity}%",
+        "states": { "warning": 30, "critical": 15 }
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂚",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    }
+}

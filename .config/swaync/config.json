@@ -40,7 +40,7 @@
     "buttons-grid": {
       "actions": [
         { "label": "📶  Wifi", "command": "nm-connection-editor" },
-        { "label": "🔵  Bluetooth", "command": "blueman-manager" },
+        { "label": "🔵  Bluetooth", "command": "gnome-control-center bluetooth" },
         { "label": "🔊  Âm thanh", "command": "pavucontrol" },
         { "label": "🖼️  Hình nền", "command": "azote" },
         { "label": "📸  Chụp màn", "command": "grimshot --notify save area" },
